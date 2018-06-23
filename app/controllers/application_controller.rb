@@ -12,7 +12,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/signup' do
-
     erb :'/users/signup'
   end
 
