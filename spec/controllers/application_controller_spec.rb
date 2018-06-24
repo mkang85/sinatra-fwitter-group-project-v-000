@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'pry'
 
 describe ApplicationController do
-
+  
   describe "Homepage" do
     it 'loads the homepage' do
       get '/'

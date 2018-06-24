@@ -1,8 +1,13 @@
 class TweetsController < ApplicationController
 
 get '/tweets' do
-  @tweets = Tweet.all
-  erb :'/tweets'
+  if !session[:user_id]
+    redirect to '/login'
+  else
+    @tweets = Tweet.all
+    @user = User.find(session[:user_id])
+    erb :'/tweets/show'
+  end
 end
 
 get '/tweets/new' do
