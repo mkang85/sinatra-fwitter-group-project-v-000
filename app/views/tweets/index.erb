@@ -1,6 +1,6 @@
-<h1>Welcome, <%=@user.username%></h1>
+<h2>Welcome, <%=@user.username%>. Here are the most recent tweets:</h2>
 
-<%@tweets.each do |tweet|%>
-<label><%=tweet.content%></label>
-<h3><%=tweet.user_id%></h3>
-<%end%>
+<% @tweets.each do |tweet| %>
+  <h3><%= tweet.user.username %> tweeted</h3>
+  <p><%= tweet.content %></p>
+<% end %>

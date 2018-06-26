@@ -31,6 +31,8 @@ class TweetsController < ApplicationController
     if !session[:user_id]
       redirect to '/login'
     else
+      # binding.pry
+      @user = User.find(session[:user_id])
       @tweet = Tweet.find(params[:id])
       erb :'/tweets/show'
     end
