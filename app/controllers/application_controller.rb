@@ -10,6 +10,9 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
+    if session[:user_id]
+     redirect to :'/tweets'
+    end
     erb :'/users/homepage'
   end
 
@@ -30,7 +33,6 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/login' do
-
     if session[:user_id]
       redirect :'/tweets'
     end
