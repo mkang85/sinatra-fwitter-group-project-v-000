@@ -14,16 +14,16 @@ class TweetsController < ApplicationController
     if !session[:user_id]
       redirect to '/login'
     else
-    erb :'/tweets/new'
+      erb :'/tweets/new'
+    end
   end
-end
 
   post '/tweets' do
     if params[:content].empty? || !session[:user_id]
       redirect to '/tweets/new'
     else
-    @tweet = Tweet.create(content: params[:content], user_id: session[:user_id])
-    erb :'/tweets/show'
+      @tweet = Tweet.create(content: params[:content], user_id: session[:user_id])
+      erb :'/tweets/show'
     end
   end
 
@@ -31,17 +31,17 @@ end
     if !session[:user_id]
       redirect to '/login'
     else
-    @tweet = Tweet.find(params[:id])
-    erb :'/tweets/show'
+      @tweet = Tweet.find(params[:id])
+      erb :'/tweets/show'
+    end
   end
-end
 
   get '/tweets/:id/edit' do
-      if !session[:user_id]
+    if !session[:user_id]
       redirect to '/login'
-      else
-        @tweet = Tweet.find(params[:id])
-        erb :'/tweets/edit'
+    else
+      @tweet = Tweet.find(params[:id])
+      erb :'/tweets/edit'
     end
   end
 
@@ -50,21 +50,20 @@ end
     if params[:content].empty? || !session[:user_id]
       redirect to "/tweets/#{@tweet.id}/edit"
     else
-    @tweet.content = params[:content]
-    @tweet.save
-    redirect to "/tweets/#{@tweet.id}"
+      @tweet.content = params[:content]
+      @tweet.save
+      redirect to "/tweets/#{@tweet.id}"
+    end
   end
-end
 
   delete '/tweets/:id' do
     @user = User.find_by(session[:user_id])
     @tweet = Tweet.find(params[:id])
     if session[:user_id] && @user.tweets.include?(@tweet)
-    @tweet.destroy
-  else
-    puts "Sorry, cannot delete tweet!"
+      @tweet.destroy
+    else
+      puts "Sorry, cannot delete tweet!"
+    end
   end
-  end
-
 
 end
