@@ -6,14 +6,12 @@
   <body>
     <header>
       <nav>
-
-        <% if @logged_in %>
+        <% if @user %>
           Welcome, <%= @user.username %>.
         <% else %>
           <a href="/signup"><h3>Sign up</h3></a>
           <a href="/login"><h3>Login</h3></a>
         <% end %>
-
       </nav>
     </header>
     <div class="container">

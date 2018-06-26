@@ -9,10 +9,6 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "secret"
   end
   
-  after do
-    @logged_in = !!session[:user_id]
-  end
-
   get '/' do
     if session[:user_id]
      redirect to :'/tweets'

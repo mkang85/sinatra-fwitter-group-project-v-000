@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
 
-  after do
-    if @logged_in
+  before do
+    if session[:user_id]
       @user = User.find(session[:user_id])
     else
       redirect to '/login'
