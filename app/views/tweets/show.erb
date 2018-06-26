@@ -1,7 +1,6 @@
 <%= @tweet.user.username %> tweeted:
 <%= @tweet.content %>
 
-<%# binding.pry %>
 <%# if @tweet.user == @user %>
   <form class="" action="/tweets/<%= @tweet.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">

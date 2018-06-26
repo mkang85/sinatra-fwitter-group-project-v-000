@@ -4,12 +4,23 @@
     <title>Fwitter</title>
   </head>
   <body>
+    <header>
+      <nav>
 
+        <% if @logged_in %>
+          Welcome, <%= @user.username %>.
+        <% else %>
+          <a href="/signup"><h3>Sign up</h3></a>
+          <a href="/login"><h3>Login</h3></a>
+        <% end %>
+
+      </nav>
+    </header>
     <div class="container">
       <h1>Fwitter!</h1>
-      <%= yield %>
-    
-    </div>
 
+      <%= yield %>
+
+    </div>
   </body>
 </html>

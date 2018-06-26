@@ -1,4 +1,4 @@
-<h2>Welcome, <%=@user.username%>. Here are the most recent tweets:</h2>
+<h2>Here are the most recent tweets:</h2>
 
 <% @tweets.each do |tweet| %>
   <h3><%= tweet.user.username %> tweeted</h3>
